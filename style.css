@@ -1,0 +1,81 @@
+body {
+    font-family: arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav {
+    background: #1abc9c;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+nav button:hover {
+    background: #16a085;
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+form input, form button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+form input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #219150;
+}
+
+/*Lista de atendimentos*/
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    background: #ecf0f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/*Respondividade*/
+@media (mas-width: 600px) {
+    form{
+        flex-direction: colunm;
+    }
+}

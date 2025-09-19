@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Diária - Barbeiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Gestão Diária</h1>
+    </header>
+
+    <!Menu Principal>
+    <nav>
+        <button onclick="mostrarPagina('historico')">Histórico</button>
+        <button onclick="mostrarPagina('graficos')">Dashboard</button>
+    </nav>
+    <main id="conteudo">
+        <p>  Bem vindo ao sistema de Gestão Diária do Barbeiro.</p>
+        
+        <h2>Atendimentos de Hoje</h2>
+
+        <!-- Formulário para adiconar atendimento -->
+        <form id="FormAtendimento">
+            <input type="text" id="descricao" placeholder="Descrição do atendimento" required>
+            <input type="number" id="valor" placeholder="Valor (€)" required>
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <!-- Onde os atendimentos vão aparecer-->
+         <ul id="ListaAtendimentos"></ul>
+
+         <!--Total do dia-->
+         <h3>Total do Dia: <span id="totalDia">0</span> €</h3>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
