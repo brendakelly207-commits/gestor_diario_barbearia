@@ -295,3 +295,50 @@
   renderDashboard();
 
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("pin-overlay");
+  const pinInput = document.getElementById("pin-input");
+  const pinBtn = document.getElementById("pin-btn");
+  const resetBtn = document.getElementById("reset-btn");
+  const pinTitle = document.getElementById("pin-title");
+  const pinMsg = document.getElementById("pin-msg");
+
+  let savedPin = localStorage.getItem("userPIN");
+
+  if (savedPin) {
+    // Usuário já tem PIN → pede para desbloquear
+    pinTitle.textContent = "Digite seu PIN";
+    pinBtn.textContent = "Entrar";
+    resetBtn.style.display = "block"; // mostra botão de reset
+  }
+
+  pinBtn.addEventListener("click", () => {
+    const enteredPin = pinInput.value.trim();
+
+    if (!savedPin) {
+      // Criar PIN pela primeira vez
+      if (enteredPin.length < 4) {
+        pinMsg.textContent = "O PIN deve ter pelo menos 4 dígitos.";
+        return;
+      }
+      localStorage.setItem("userPIN", enteredPin);
+      overlay.style.display = "none";
+    } else {
+      // Validar PIN
+      if (enteredPin === savedPin) {
+        overlay.style.display = "none";
+      } else {
+        pinMsg.textContent = "PIN incorreto!";
+      }
+    }
+  });
+
+  // Função de reset
+  resetBtn.addEventListener("click", () => {
+    if (confirm("Tem certeza que deseja redefinir o PIN?")) {
+      localStorage.removeItem("userPIN");
+      location.reload(); // recarrega e volta para criar novo PIN
+    }
+  });
+});
