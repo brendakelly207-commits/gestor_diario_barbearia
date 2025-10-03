@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Barbearia</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Dashboard</h1>
+  </header>
+
+  <main class="container">
+    <section class="box">
+      <h2>Atendimentos Semanais</h2>
+      <div class="chart-container">
+        <canvas id="graficoAtendimentos"></canvas>
+      </div>
+    </section>
+
+    <section class="box">
+      <h2>Serviços Realizados</h2>
+      <div class="chart-container">
+        <canvas id="graficoServicos"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button onclick="window.location.href='index.html'">Início</button>
+    <button onclick="window.location.href='historico.html'">Histórico</button>
+    <button onclick="window.location.href='total.html'">Total</button>
+    <button class="active" onclick="window.location.href='dashboard.html'">Dashboards</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>

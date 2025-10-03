@@ -1,81 +1,248 @@
+/* =============================
+   CSS - Gestão Barbearia (Dark Mode / Ciano)
+   ============================= */
+
+/* Variáveis de cores */
+:root {
+  --cor-fundo-principal: #0F172A;
+  --cor-acento: #06B6D4;
+  --cor-fundo-card: #1E293B;
+  --cor-texto: #F1F5F9;
+  --cor-acumulado: #A855F7;
+  --cor-menu: #1E293B;
+  --cor-menu-ativo: #06B6D4;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+/* Body */
 body {
-    font-family: arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
+  background-color: var(--cor-fundo-principal);
+  color: var(--cor-texto);
+  min-height: 100vh;
+  padding-bottom: 80px; /* espaço para menu fixo */
 }
 
-header {
-    background: #2c3e50;
-    color: white;
-    padding: 15px;
-    text-align: center;
+/* Containers gerais */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 15px;
 }
 
-nav {
-    background: #1abc9c;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-
+/* Título principal */
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--cor-acento);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-nav button:hover {
-    background: #16a085;
+/* Caixa de valor do dia */
+.box-total {
+  background-color: var(--cor-fundo-card);
+  border: 2px solid var(--cor-acento);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-main {
-    padding: 20px;
+.box-total span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--cor-acento);
 }
 
-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 15px;
+.box-total .total-acumulado {
+  font-size: 0.9rem;
+  color: var(--cor-acumulado);
+  text-align: left;
+  margin-top: 8px;
 }
 
-form input, form button {
-    padding: 10px;
-    font-size: 16px;
+/* Botão Adicionar Atendimento */
+#btnAdicionar {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 20px auto;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F172A;
+  background-color: var(--cor-acento);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-form input {
-    flex: 1;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+#btnAdicionar:hover {
+  background-color: #04a4bc;
 }
 
-form button {
-    background: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* =============================
+   Total do Dia - Design Ajustado
+   ============================= */
+.valor-principal {
+  background-color: var(--cor-fundo-card);
+  border: 2px solid var(--cor-acento);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 300px;
 }
 
-form button:hover {
-    background: #219150;
+.valor-principal .valor {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--cor-acento);
+  display: block;
+  margin-bottom: 8px;
 }
 
-/*Lista de atendimentos*/
-ul {
-    list-style: none;
-    padding: 0;
-}
-ul li {
-    background: #ecf0f1;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
+.total-acumulado {
+  font-size: 1rem;
+  color: var(--cor-texto);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/*Respondividade*/
-@media (mas-width: 600px) {
-    form{
-        flex-direction: colunm;
-    }
+.total-acumulado strong {
+  color: var(--cor-acumulado);
+  font-weight: 700;
+}
+
+
+/* Formulário de atendimento */
+#formAtendimento {
+  background-color: var(--cor-fundo-card);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+#formAtendimento.hidden {
+  display: none;
+}
+
+#formAtendimento input[type="text"],
+#formAtendimento input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background-color: #1E293B;
+  color: var(--cor-texto);
+}
+
+#formAtendimento label {
+  margin-right: 10px;
+}
+
+#formAtendimento button[type="submit"] {
+  background-color: var(--cor-acento);
+  color: #0F172A;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* Lista de atendimentos */
+#ListaAtendimentos {
+  list-style: none;
+  margin-top: 10px;
+}
+
+#ListaAtendimentos li {
+  background-color: var(--cor-fundo-card);
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ListaAtendimentos li .left {
+  max-width: 70%;
+}
+
+#ListaAtendimentos li .btn-delete {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #F87171;
+}
+
+/* Menu inferior fixo */
+.bottom-nav {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--cor-menu);
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 20px;
+  max-width: 350px;
+  width: 90%;
+  z-index: 100;
+}
+
+.bottom-nav button {
+  background: transparent;
+  border: none;
+  color: var(--cor-texto);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+
+.bottom-nav button.active {
+  background-color: var(--cor-menu-ativo);
+  color: #0F172A;
+}
+
+/* Histórico e transações */
+.card {
+  background-color: var(--cor-fundo-card);
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+}
+
+/* Dashboard - gráficos */
+canvas {
+  background-color: var(--cor-fundo-card);
+  border-radius: 12px;
+  padding: 10px;
+  width: 100% !important;
+  height: 300px !important;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 600px){
+  h1 { font-size: 1.5rem; }
+  #btnAdicionar { max-width: 100%; }
+  .bottom-nav { padding: 6px 12px; }
 }

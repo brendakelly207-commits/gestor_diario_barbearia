@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Total - Barbearia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="topbar"><h1>Total Financeiro</h1></header>
+
+    <div class="valor-principal">
+      <span class="valor" id="total">€ 0,00</span>
+    </div>
+
+    <form id="formTransacao" class="form-card">
+      <input id="descricao" type="text" placeholder="Descrição" required>
+      <input id="valor" type="number" placeholder="Valor (€)" step="0.01" required>
+      <select id="tipo" required>
+        <option value="" disabled selected>Tipo</option>
+        <option value="entrada">Entrada</option>
+        <option value="saida">Retirada</option>
+      </select>
+      <button class="primary" type="submit">Registrar</button>
+    </form>
+
+    <h2>Histórico de Transações</h2>
+    <div id="historico-list" class="list"></div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button onclick="window.location.href='index.html'">Início</button>
+    <button onclick="window.location.href='historico.html'">Histórico</button>
+    <button onclick="window.location.href='dashboard.html'">Dashboards</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão Diária - Barbeiro</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gestão Diária - Barbearia</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Gestão Diária</h1>
-    </header>
+  <div class="container">
+    <header class="topbar"><h1>Gestão diária Barbearia</h1></header>
 
-    <!Menu Principal>
-    <nav>
-        <button onclick="mostrarPagina('historico')">Histórico</button>
-        <button onclick="mostrarPagina('graficos')">Dashboard</button>
-    </nav>
-    <main id="conteudo">
-        <p>  Bem vindo ao sistema de Gestão Diária do Barbeiro.</p>
-        
-        <h2>Atendimentos de Hoje</h2>
+    <div class="valor-principal">
+      <span class="valor" id="totalDia">€ 0,00</span>
+    </div>
+    <div class="total-acumulado">Total acumulado: <strong id="totalAcumulado">€ 0,00</strong></div>
 
-        <!-- Formulário para adiconar atendimento -->
-        <form id="FormAtendimento">
-            <input type="text" id="descricao" placeholder="Descrição do atendimento" required>
-            <input type="number" id="valor" placeholder="Valor (€)" required>
-            <button type="submit">Adicionar</button>
-        </form>
+    <button class="primary" id="btnAdicionar">➕ Adicionar Atendimento</button>
 
-        <!-- Onde os atendimentos vão aparecer-->
-         <ul id="ListaAtendimentos"></ul>
+    <form id="formAtendimento" class="hidden form-card">
+      <input id="nomeCliente" type="text" placeholder="Nome do Cliente" required>
+      <div id="servicos" class="form-card">
+        <label><input type="checkbox" value="Corte degradê" data-valor="15"> Corte degradê (15€)</label>
+        <label><input type="checkbox" value="Corte simples" data-valor="10"> Corte simples (10€)</label>
+        <label><input type="checkbox" value="Corte tesoura" data-valor="18"> Corte tesoura (18€)</label>
+        <label><input type="checkbox" value="Sobrancelha" data-valor="4"> Sobrancelha (4€)</label>
+        <label><input type="checkbox" value="Barba" data-valor="8"> Barba (8€)</label>
+        <label><input type="checkbox" value="Acabamento" data-valor="5"> Acabamento (5€)</label>
+        <label><input type="checkbox" value="Cabelo+Barba" data-valor="19"> Cabelo+Barba (19€)</label>
+        <label><input type="checkbox" value="Limpeza de pele" data-valor="10"> Limpeza de pele (10€)</label>
+        <label><input type="checkbox" value="Depilação a cera" data-valor="4"> Depilação a cera (4€)</label>
+      </div>
+      <button class="primary" type="submit">Salvar Atendimento</button>
+    </form>
 
-         <!--Total do dia-->
-         <h3>Total do Dia: <span id="totalDia">0</span> €</h3>
+    <h2>Atendimentos de Hoje</h2>
+    <ul id="ListaAtendimentos" class="list"></ul>
+  </div>
 
-    </main>
+  <nav class="bottom-nav">
+    <button onclick="window.location.href='historico.html'">Histórico</button>
+    <button onclick="window.location.href='dashboard.html'">Dashboards</button>
+    <button onclick="window.location.href='total.html'">Total</button>
+  </nav>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
