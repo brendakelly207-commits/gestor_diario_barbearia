@@ -1,40 +1,35 @@
-const CACHE_NAME = 'gb-cache-v1';
-const ASSETS = [
-  '/',
-  '/index.html',
-  '/historico.html',
-  '/dashboard.html',
-  '/total.html',
-  '/style.css',
-  '/script.js',
-  '/icons.png',
-  '/icons/icon-512.png',
-  
-];
-
-// Instalação do service worker e cache dos assets
-self.addEventListener('install', (evt) => {
-  evt.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(()=>{})
+self.addEventListener("install", event => {
+  console.log("Service Worker: Instalado");
+  event.waitUntil(
+    caches.open("app-cache").then(cache => {
+      return cache.addAll([
+        "./",
+        "./index.html",
+        "./style.css",
+        "./script.js",
+        "./dashboard.html",
+        "./historico.html",
+        "./icons.png"
+      ]);
+    })
   );
 });
 
-// Ativação e limpeza de caches antigos
-self.addEventListener('activate', (evt) => {
-  evt.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-    ))
+self.addEventListener("activate", event => {
+  console.log("Service Worker: Ativado");
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.filter(key => key !== "app-cache").map(key => caches.delete(key))
+      );
+    })
   );
 });
 
-// Intercepta requisições e responde do cache, atualizando se possível
-self.addEventListener('fetch', (evt) => {
-  evt.respondWith(
-    fetch(evt.request).then(res => {
-      const resClone = res.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(evt.request, resClone));
-      return res;
-    }).catch(() => caches.match(evt.request))
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
   );
 });
